@@ -147,7 +147,7 @@ window.mainApp
         }
     };
 }])
-.directive('initializeBlog', ['$rootScope', '$owner', '$config', function($rootScope, $owner, $config, $blog) {
+.directive('initializeBlog', ['$rootScope', '$owner', '$config', '$tools', function($rootScope, $owner, $config, $tools) {
 
     return {
         restrict: 'A',
@@ -155,7 +155,11 @@ window.mainApp
         link: function(scope, element, attrs) {
             $config.set_source(attrs.source);
             $.post('config/configuration.json', function(res){
-                    console.log(res)
+                console.log(res)
+                if($tools.isJson(res))
+                {
+                    res = JSON.parse(res);
+                }
                 // res = JSON.parse(res);
                 $config.initialize_configuration(res);
                 

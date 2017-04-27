@@ -43,8 +43,8 @@ window.mainApp
     {
         var credential = {
             source: $config.source,
-            administrator: Cookies.getJSON('sudo'),
-            public: Cookies.getJSON('public'),
+            administrator: Cookies.getJSON('sudo')? Cookies.getJSON('sudo') : {},
+            public: Cookies.getJSON('public')? Cookies.getJSON('public') : {},
         }
         return credential; 
     }
@@ -126,6 +126,15 @@ window.mainApp
             console.log(res)
             if(typeof fail == 'function'){fail(res)}
         })
+    }
+
+    this. isJson = function(str) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
     }
 })
 .service('$pagination', function ($tools, $config, $rootScope) {
