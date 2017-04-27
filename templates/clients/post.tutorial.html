@@ -1,0 +1,64 @@
+<div class="list-group sidebar">
+	<div class="list-group-item header">
+		Tutorial Post
+	</div>
+	<div class="list-group-item body" ng-init="search_category({search:'Tutorial', name:'search_tutorial'})">
+		<div class="row">
+			
+			<div class="col-md-6"  ng-repeat="item in search_tutorial | orderBy : '-counter_post' " ng-if="$index < 1">
+				<div class="list-group">
+					<div class="list-group-item text-center">
+						<img class="post-image" src="{{item.avatar_post?'http://localhost/projects/blog/server/locker/files/'+item.avatar_post:'assets/images/no-image.png'}}">
+					</div>
+					<div class="list-group-item">
+						<div class="post-title"><strong>{{item.title}}</strong></div>
+						<div class="post-component row">
+							<div class="col-md-6">
+								<span class="text-muted">2, Januari 2017</span>
+							</div>
+							<div class="col-md-6">
+								<span class="text-muted pull-right">
+									{{item.counter_post}} <i class="glyphicon glyphicon-eye-open"></i>
+									30 <i class="glyphicon glyphicon-comment"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="list-group">
+					<div class="list-group-item"  ng-repeat="item in search_tutorial | orderBy : '-counter_post' " ng-if="$index > 0">
+						
+						<div class="media">
+							<div class="media-left">
+								<a href="#">
+									<img class="media-object" src="{{item.avatar_post?'http://localhost/projects/blog/server/locker/files/'+item.avatar_post:'assets/images/no-image.png'}}" style="width: 110px;">
+								</a>
+							</div>
+							<div class="media-body">
+								<h5 class="media-heading">{{item.title}}</h5>
+								<div class="media-footer row">
+									<div class="col-md-6">
+										<span class="text-muted">2, Januari 2017</span>
+									</div>
+									<div class="col-md-6">
+										<span class="text-muted pull-right">
+											{{item.counter_post}} <i class="glyphicon glyphicon-eye-open"></i>
+											30 <i class="glyphicon glyphicon-comment"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="list-group-item bottom text-center">
+		Show All post
+	</div>
+</div>

@@ -1,0 +1,33 @@
+<style type="text/css">
+	.blog--navi
+	{
+		margin-bottom: 30px;
+	}
+</style>
+<section class="blog--navi">
+	<fieldset>
+		<a href="#/blog/create" class="btn btn-primary btn-sm">Create Blog</a>
+	</fieldset>
+</section>
+<section>
+	<fieldset>
+		<legend>Blog Lists</legend>
+		<section ng-init="get_blogs()" class="mdl-grid">
+			<div class="text-center" ng-if="blog.records.length < 1">No Blog Found!</div>
+			<div class="demo-card-square mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col" ng-repeat="item in blog.records" ng-if="blog.records.length > 0">
+				<div class="mdl-card__title mdl-card--expand">
+				<h2 class="mdl-card__title-text">{{item.blog_name}}</h2>
+				</div>
+				<div class="mdl-card__supporting-text">
+					{{item.blog_description}}
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<a href="#/blog/detail/{{item.blog_owner}}/{{item.blog_id}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+						View Detail
+					</a>
+				</div>
+			</div>
+
+		</section>
+	</fieldset>
+</section>

@@ -1,0 +1,42 @@
+<style type="text/css">
+	.post-group-item
+	{
+		padding: 10px;
+	}
+	.post-group-item .post-image
+	{
+		width: 100%;
+		margin-top: 10px;
+	}
+	.post-group-item .post-component
+	{
+		position: absolute;
+		bottom: 0px;
+		width: 100%;
+	}
+</style>
+<div class="list-group sidebar">
+	<div class="list-group-item header">Trending Post</div>
+	<div class="list-group-item body">
+		<div class="post-group mdl-grid">
+			
+			<div class="post-group-item mdl-cell mdl-cell--3-col" ng-repeat="item in posts | orderBy : 'counter_post' " ng-if="$index < 4">
+				<img class="post-image" src="{{item.avatar_post?url_image(item.avatar_post):'assets/images/no-image.png'}}">
+				<div class="post-title"><strong>{{item.title}}</strong></div>
+				<div class="post-component row">
+					<div class="col-md-6">
+						<span class="text-muted">2, Januari 2017</span>
+					</div>
+					<div class="col-md-6">
+						<span class="text-muted pull-right">
+							{{item.counter_post}} <i class="glyphicon glyphicon-eye-open"></i>
+							30 <i class="glyphicon glyphicon-comment"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="list-group-item Footer">More trending post</div>
+</div>

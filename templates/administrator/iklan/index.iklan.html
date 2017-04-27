@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="list-group">
+		<div class="list-group-item">
+			<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect {{auto_ads == '1'? 'is-checked' : '' }}" for="activate-auto-ads" material-design>
+			  	<input type="checkbox" id="activate-auto-ads" class="mdl-switch__input sr-only" ng-model="auto_ads" value="1" ng-true-value="1" ng-false-value="0" ng-change="update_auto_ads()">
+			  	<span class="mdl-switch__label" style="margin-left: 20px;">Activate auto ads</span>
+			</label>
+		</div>
+	</div>
+
+	<div ng-if="auto_ads == 1">
+		<div>
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" show-tab data-toggle="tab">Setting ads</a></li>
+			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" show-tab data-toggle="tab">Ads List</a></li>
+			<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" show-tab data-toggle="tab">Ads Analytics</a></li>
+			<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" show-tab data-toggle="tab">Settings</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="home">
+					<div class="list-group flat">
+
+						<div class="list-group-item flat"  style="margin-top: 10px;">
+							<div class="form-inline">  
+								<div class="form-group">
+								    <label for="exampleInputName2">Ad shown in one page : </label>
+								    <input type="text" class="form-control input-sm" id="exampleInputName2" placeholder="Jane Doe">
+							  	</div>
+							</div>
+						</div>
+						<div class="list-group-item flat">
+							
+							<div class="form-inline">  
+								<div class="form-group">
+								    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect {{shuffle_ads == '1'? 'is-checked' : '' }}" for="shuffle-ads" material-design>
+									  	<span class="mdl-switch__label" style=""> Shuffle Ads </span>
+									  	<input type="checkbox" id="shuffle-ads" class="mdl-switch__input sr-only" ng-model="shuffle_ads" value="1" ng-true-value="1" ng-false-value="0" ng-change="update_shuffle_ads()">
+									</label>
+							  	</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="profile">...</div>
+				<div role="tabpanel" class="tab-pane" id="messages">...</div>
+				<div role="tabpanel" class="tab-pane" id="settings">...</div>
+			</div>
+
+		</div>
+		
+
+	</div>
+</div>

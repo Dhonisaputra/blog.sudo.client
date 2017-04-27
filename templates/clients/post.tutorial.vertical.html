@@ -1,0 +1,33 @@
+<div class="list-group">
+	<div class="list-group-item text-center"  ng-if="posts <= 0">
+		No Post found!
+	</div>
+	<div class="list-group-item"  ng-repeat="item in posts | orderBy : '-counter_post' ">
+		
+		<div class="media">
+			<div class="media-left" ng-if="item.images_item.length > 0">
+				<a href="#">
+					<img class="media-object" src="{{item.images_item[0]}}" style="width: 110px;">
+				</a>
+			</div>
+			<div class="media-body">
+				<h5 class="media-heading"><a href="#/open/article/{{item.id_post}}">{{item.title}}</a></h5>
+				<div class="media-content" data-id_post="{{item.id_post}}" read-more ng-bind-html="item.content | to_trusted"></div>
+				<div class="media-footer row">
+					<div class="col-md-6">
+						<span class="text-muted">2, Januari 2017</span>
+					</div>
+					<div class="col-md-6">
+						<span class="text-muted pull-right">
+							{{item.counter_post}} <i class="glyphicon glyphicon-eye-open"></i>
+							30 <i class="glyphicon glyphicon-comment"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+

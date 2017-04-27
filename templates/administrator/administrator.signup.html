@@ -1,0 +1,19 @@
+<section>
+	<form ng-submit="submit_new_owner()">
+		<div class="form-group">
+			<label>Your Name</label>
+			<input type="text" class="form-control" ng-model="owner.name" name="">
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" class="form-control" ng-model="owner.email" name="" ng-change="check_available_mail()">
+		</div>
+		<div class="form-group">
+			<label>password</label>
+			<input type="text" class="form-control" ng-model="owner.password" name="">
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit">Submit</button>
+		</div>
+	</form>
+</section>

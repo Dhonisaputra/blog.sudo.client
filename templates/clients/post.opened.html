@@ -1,0 +1,32 @@
+<link rel="stylesheet" type="text/css" href="assets/css/style.home.css">
+<div class="banner standard-banner"></div>
+<ul class="menu standard-menu" ng-include="'templates/clients/navbar.html'"></ul>
+<div class="container-fluid container--content-box">
+	<div class="col-md-12">	
+		<!-- <div ng-include="'templates/clients/post.trending.horizontal.html'"></div> -->
+	</div>
+	<div class="col-md-8">
+
+		<div class="list-group sidebar" id="list-post">
+			<div class="list-group-item header">
+				{{post.title}}
+			</div>
+			<div class="list-group-item body" ng-bind-html="post.content">
+				
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="list-group sidebar">
+			<div class="list-group-item header">Stay Connected</div>
+			<div class="list-group-item body">Facebook</div>
+			<div class="list-group-item body">Twitter</div>
+			<div class="list-group-item body">Instagram</div>
+		</div>
+		<div class="list-group sidebar">
+			<div class="list-group-item header">Recent Post</div>
+			<div class="list-group-item body" ng-include="'templates/clients/sidebar.recentnews.html'">
+			</div>
+		</div>
+	</div>
+</div>

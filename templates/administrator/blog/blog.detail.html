@@ -1,0 +1,76 @@
+<style type="text/css">
+	.tab-pane
+	{
+		padding-top: 20px;
+	}
+	section
+	{
+		padding-top: 20px;
+		background: white;
+	}
+</style>
+<section class="container-fluid" ng-init="get_blog()">
+	<div>
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#detail" aria-controls="detail" role="tab" show-tab data-toggle="tab">Detail</a></li>
+			<li role="presentation"><a href="#auth" aria-controls="auth" role="tab" show-tab data-toggle="tab">Auth</a></li>
+			<li role="presentation"><a href="#resources" aria-controls="resources" role="tab" show-tab data-toggle="tab">Resources</a></li>
+			<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" show-tab data-toggle="tab">Settings</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="detail">
+				<table class="table table-bordered table-hover table-striped">
+					<tr>
+						<td>Blog Name</td>
+						<td>{{blog.data.blog_name}}</td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td>{{blog.data.blog_description}}</td>
+					</tr>
+					<tr>
+						<td>Created at</td>
+						<td>{{blog.data.blog_created_time}}</td>
+					</tr>
+
+				</table>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="auth">
+				<div class="form-group">
+					<label>Blog key</label>
+					<div class="input-group">
+						<input type="text" id="blog_key" class="form-control btn-sm" name="" readonly="" value="{{blog.data.blog_key}}">
+						<span class="input-group-btn">
+					        <button class="btn btn-default btn-sm" type="button" ng-click="copy_blog_key()">copy!</button>
+				      	</span>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="resources">
+				<div class="form-group">
+					<label>Download Server</label><br>
+					<a href="https://github.com/Dhonisaputra/blog.server.client/archive/master.zip" target="_blank" class="btn btn-primary">Download Server</a>
+				</div>
+				<div class="form-group">
+					<label>Download Client</label><br>
+					<a href="https://github.com/Dhonisaputra/blog.client/archive/master.zip" target="_blank" class="btn btn-primary">Download Client</a>
+				</div>
+				<div class="form-group">
+					<label>Download Database (MySQL)</label><br>
+					<button class="btn btn-primary" ng-click="download_file_sql(blog.data)">Download MySQL</button>
+				</div>
+
+				<div class="form-group">
+					<label>Download File Configuration</label><br>
+					<button class="btn btn-primary" ng-click="download_file_configuration(blog.data)">Download File</button>
+				</div>
+				
+			</div>
+			<div role="tabpanel" class="tab-pane" id="settings">...</div>
+		</div>
+
+	</div>
+</section>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" initialize-blog source="panel">
+<head lang="en">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title ng-bind="'Laboratorium &mdash; ' + title"></title>
+
+    <link href="assets/css/modules.css" rel="stylesheet" />
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Google Material -->
+	<link rel="stylesheet" type="text/css" href="bower_components/material-design-lite/material.min.css">
+	<script type="text/javascript" src="bower_components/material-design-lite/material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<!-- d3 js -->
+	<script type="text/javascript" src="plugins/d3/d3.min.js"></script>
+
+	<!-- Animation library for notifications   -->
+    <link href="assets/css/uplabs.animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/uplabs.light-bootstrap-dashboard.css" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/uplabs.demo.css" rel="stylesheet" />
+
+    <link href="assets/css/uplabs.pe-icon-7-stroke.css" rel="stylesheet" />
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- Uses a header that scrolls with the text, rather than staying locked at the top -->
+	<!-- <div class="{{_navbar_class}}" style="min-height: 100vh;">
+		<div class="mdl-layout__drawer" ng-if="is_auth == 1" ng-include="'templates/administrator/components/navbar.html'"></div>
+
+		<main class="mdl-layout__content">
+			<div class="page-content">
+				
+				<ng-view></ng-view>
+
+			</div>
+		</main>	
+		
+	</div> -->
+	<div class="wrapper">
+
+	    <!--
+
+	        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+	        Tip 2: you can also add an image using data-image tag
+
+	    -->
+	    <!-- menu sidebar -->
+	    <div ng-include="'templates/administrator/components/sidebar.html'" class="" ng-if="sidebar == true"></div>
+
+	    <div class="main-panel" style = "{{style_main_panel}}">
+	        <!-- navbar -->
+	        <div ng-include="'templates/administrator/components/navbar.html'"></div>
+
+	        <!-- content -->
+	        <div class="content">
+	            <div class="container-fluid">
+					<ng-view></ng-view>
+	            </div>
+	        </div>
+
+	    </div>
+	</div>
+	<!-- <div ng-include="{{default_template}}"></div>	 -->
+	<div id="snackbarTemp" class="mdl-snackbar mdl-js-snackbar" style=""> 
+		<div class="mdl-spinner mdl-js-spinner is-active" style="display:none; margin-top: 9px;margin-left: 7px;"></div>
+		<div class="mdl-snackbar__text"></div> 
+		<button type="button" class="mdl-snackbar__action"></button> 
+	</div>
+
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<!-- <script type="text/javascript" src="bower_components/angular-ui-bootstrap/angular-ui-bootstrap.min.js"></script> -->
+	<script type="text/javascript" src="bower_components/socketio/socketio.js"></script>
+	<script type="text/javascript" src="bower_components/socketio/akar.socketio.js"></script>
+	<script type="text/javascript" src="bower_components/jscookie/js.cookie.js"></script>
+	<script type="text/javascript" src="js/Modules/module.js"></script>
+	<script type="text/javascript" src="js/Routing/main.js"></script>
+	<script type="text/javascript" src="js/Controllers/Controllers.js"></script>
+	<script type="text/javascript" src="js/Services/Services.js"></script>
+	<script type="text/javascript" src="js/Directive/directive.js"></script>
+	<script type="text/javascript" src="js/server.analytics.js"></script>
+	<script type="text/javascript" src="assets/js/snackbar.helper.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+	<script type="text/javascript" >
+		// window.node = new Node('http://localhost:3000')
+		// Analytics_server.__set_socket(window.notif);
+	</script>
+	<!--  Checkbox, Radio & Switch Plugins -->
+	<!-- <script src="assets/js/uplabs.bootstrap-checkbox-radio-switch.js"></script> -->
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/uplabs.bootstrap-notify.js"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="assets/js/uplabs.light-bootstrap-dashboard.js"></script>
+
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="assets/js/uplabs.demo.js"></script>
+</body>
+</html>
