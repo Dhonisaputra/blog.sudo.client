@@ -1,0 +1,57 @@
+<section ng-init="get_blog()" class="mdl-grid">
+	<div class="demo-card-square mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col" ng-if="blog.data.is_installed == 0">
+		<div class="mdl-card__title mdl-card--expand">
+		<h2 class="mdl-card__title-text">Install Blog</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+			Install your blog
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<a href="#/blog/detail/{{blog.data.blog_owner}}/{{blog.data.blog_id}}/wizard/install/blog" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+				Install
+			</a>
+		</div>
+	</div>
+	<div class="demo-card-square mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col alert-danger" ng-if="blog.data.is_installed == 1">
+		<div class="mdl-card__title mdl-card--expand">
+		<h2 class="mdl-card__title-text">Uninstall Blog</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+			Uninstall your blog
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<a href="#/blog/detail/{{blog.data.blog_owner}}/{{blog.data.blog_id}}/wizard/uninstall" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+				Uninstall
+			</a>
+		</div>
+	</div>
+
+	<div class="demo-card-square mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col">
+		<div class="mdl-card__title mdl-card--expand">
+		<h2 class="mdl-card__title-text">Add User</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+			Add an user to your blog. you can add directly from your blog too.
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<a href="#/blog/detail/{{blog.data.blog_owner}}/{{blog.data.blog_id}}/wizard/users" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+				Add User
+			</a>
+		</div>
+	</div>
+
+	<div class="demo-card-square mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col">
+		<div class="mdl-card__title mdl-card--expand">
+		<h2 class="mdl-card__title-text">Inspect Blog</h2>
+		</div>
+		<div class="mdl-card__supporting-text">
+			Inspect blog allowed you to keep an eye your blog's activity. 
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<a href="#/blog/detail/{{blog.data.blog_owner}}/{{blog.data.blog_id}}/wizard/add/user" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+				Inspect Blog
+			</a>
+		</div>
+	</div>
+
+</section>

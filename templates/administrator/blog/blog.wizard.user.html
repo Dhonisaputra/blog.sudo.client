@@ -1,0 +1,31 @@
+<section ng-init="get_blog()">
+	<form ng-submit="submit_setting_user(event, this)">
+		
+		<div class="form-group">
+			<label>Username</label>
+			<input class="form-control" type="text" ng-model="blog.user.username" name="username" type="text" required>
+		</div>
+		<div class="form-group">
+			<label>email</label>
+			<input class="form-control" type="email" ng-model="blog.user.email" name="email" type="text" required>
+		</div>
+		<div class="form-group">
+			<label>password</label>
+			<input class="form-control" type="password" ng-model="blog.user.password" name="password" type="text" required>
+		</div>
+		<div class="form-group">
+			<label>Level</label>
+			<select ng-model="blog.user.userlevel">
+				<option value="admin" selected>Admin</option>
+				<option value="publisher">Publisher</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary">Submit</button>
+		</div>
+		<div class="form-group">
+			<div id="wizard_db_loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+		</div>
+
+	</form>
+</section>

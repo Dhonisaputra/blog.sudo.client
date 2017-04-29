@@ -18,7 +18,7 @@ window.mainApp
     this.base_url = function(url)
     {
         url = (!url)?'':url;
-        return this.web_url+'/'+url;
+        return this.blog_server+'/'+url;
     }
     this.set_source = function(source)
     {
@@ -87,7 +87,7 @@ window.mainApp
     }
 
 })
-.service('$tools', function ($config) {
+.service('$tools', function ($config, $owner) {
     this.range = function(input, total)
     {
         var arr = []
@@ -116,11 +116,12 @@ window.mainApp
 
     this.post = function(url, data, success, fail)
     {
-        data = $.extend({credential: $config.credential() }, data)
+        var _parents = this;
+        data = $.extend({credential: $owner.credential() }, data)
         $.post(url, data )
         .done(function(res){
-            res = JSON.parse(res);
-            if(typeof success == 'function'){success(res)}
+            var parse = _parents.isJson(res)? JSON.parse(res) : res;
+            if(typeof success == 'function'){success(parse, res)}
         })
         .fail(function(res){
             console.log(res)

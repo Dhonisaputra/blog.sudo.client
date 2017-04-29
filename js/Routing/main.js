@@ -25,6 +25,24 @@ window.mainApp.config(function($routeProvider) {
 			controller: 'controller.blog.detail',
 			need_login: true,
 		})
+		.when('/blog/detail/:owner_id/:blog_id/wizard', {
+			title: 'Daftar Wizard',
+			templateUrl: 'templates/administrator/blog/blog.wizard.html',
+			controller: 'controller.blog.detail.wizard',
+			need_login: true,
+		})
+		.when('/blog/detail/:owner_id/:blog_id/wizard/install/blog', {
+			title: 'Setting Database',
+			templateUrl: 'templates/administrator/blog/blog.wizard.db.html',
+			controller: 'controller.blog.detail.wizard.setting.blog',
+			need_login: true,
+		})
+		.when('/blog/detail/:owner_id/:blog_id/wizard/users', {
+			title: 'Setting Database',
+			templateUrl: 'templates/administrator/blog/blog.wizard.user.html',
+			controller: 'controller.blog.detail.wizard.setting.user',
+			need_login: true,
+		})
 		.when('/login', {
 			title: 'Login',
 			templateUrl: 'templates/administrator/administrator.login.html',
@@ -40,6 +58,7 @@ window.mainApp.config(function($routeProvider) {
 			templateUrl: 'templates/administrator/administrator.signup.html',
 			controller: 'controller.signup'
 		})
+		
 		.otherwise({
 			redirectTo: function(){
 				var cookies = Cookies.getJSON('user');

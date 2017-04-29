@@ -1,0 +1,49 @@
+<section ng-init="get_blog()">
+	<form ng-submit="submit_setting_db()" ng-if="blog.data.is_installed == 0">
+		
+		<div class="form-group">
+			<label>Your blog server hosted</label>
+			<input class="form-control" type="text" name="blog_hosted" class="" ng-model="settings.processing_server" required>
+		</div>
+		<div class="form-group">
+			<label>Your blog client hosted</label>
+			<input class="form-control" type="text" name="blog_hosted" class="" ng-model="settings.blog_server" required>
+		</div>
+		<div class="form-group">
+			<label>Hostname</label>
+			<input class="form-control" type="text" name="hostname" class="" ng-model="settings.hostname" type="text" required>
+		</div>
+		<div class="form-group">
+			<label>username</label>
+			<input class="form-control" type="text" name="username" class="" ng-model="settings.username" type="text" required>
+		</div>
+		<div class="form-group">
+			<label>password</label>
+			<input class="form-control" type="text" name="password" class="" ng-model="settings.password" type="text" required>
+		</div>
+		<div class="form-group">
+			<label>database name</label>
+			<input class="form-control" type="text" name="database" class="" ng-model="settings.database" type="text" required>
+		</div>
+		<div class="form-group">
+			<label>Blog Key</label>
+			<input class="form-control" type="text" name="blog_key" class="" ng-model="settings.blog_key" required readonly>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit"> Save </button>
+		</div>
+	</form>
+	<div class="form-group">
+		<div id="wizard_db_loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+	</div>
+
+	<div ng-if="blog.data.is_installed == 1">
+		<div class="alert alert-info">
+			This Blog has installed at {{blog.data.blog_server}}. if you want to reinstall the blog, please uninstall current blog first.
+		</div>
+		<div class="text-center">
+			<a href="#/blog/detail/{{blog.data.blog_owner}}/{{blog.data.blog_id}}/wizard" class="btn btn-primary">Back to wizard page</a>
+			<a href="#/blog/detail/{{blog.data.blog_owner}}/{{blog.data.blog_id}}/wizard/uninstall" class="btn btn-danger">Uninstall</a>
+		</div>
+	</div>
+</section>
