@@ -154,7 +154,7 @@ window.mainApp
         scope: true,
         link: function(scope, element, attrs) {
             $config.set_source(attrs.source);
-            $.post('config/configuration.json', function(res){
+            /*$.post('config/configuration.json', function(res){
                 console.log(res)
                 if($tools.isJson(res))
                 {
@@ -163,7 +163,16 @@ window.mainApp
                 // res = JSON.parse(res);
                 $config.initialize_configuration(res);
                 
-            })
+            })*/
+            $config.initialize_configuration({
+                "double_server": false,
+                "web_url": document.location.href.origin,
+                // "processing_server": "http://server.goblog.laboratorium.xyz/",
+                "processing_server": "http://localhost/projects/blog/server_sudo/",
+                "handling_server": "http://localhost:3000",
+                "trends" : "https://jala-google-trends.herokuapp.com"
+            });
+
            /* 
             console.log(attrs.publicKey, $owner.public.get_public_key())
             if(attrs.source == 'client')

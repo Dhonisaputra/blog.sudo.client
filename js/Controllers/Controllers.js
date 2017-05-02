@@ -149,6 +149,7 @@ window.mainApp
 		$('#wizard_db_loading').show()
 		
 		$tools.post($config.server_url('blog/save_blog_settings'), {settings: $scope.settings}, function(res){
+			console.log(res)
 			$scope.wizard_db_report = '';
 			$('#wizard_db_loading').hide()
 			Snackbar.show('Installing blog has done. redirecting to create user!');
@@ -181,10 +182,20 @@ window.mainApp
 		$('#wizard_db_loading').show()
 		$scope.blog.user['blog_key'] = $scope.blog.data.blog_key;
 		$tools.post($config.server_url('blog/insert_user'), {where: {blog_key: $scope.blog.data.blog_key}, user: $scope.blog.user}, function(res){
-			console.log(res)
-			$scope.wizard_db_report = '<div class="alert alert-success">User estabilished.</div>';
 			$('#wizard_db_loading').hide()
-			Snackbar.show('Creating user has done!');
+			if(res.code == 200)
+			{
+				$scope.wizard_db_report = '<div class="alert alert-success">User estabilished.</div>';
+				Snackbar.show('Creating user has done!');
+				$scope.blog.user.username = ''
+				$scope.blog.user.email = ''
+				$scope.blog.user.password = ''
+			}
+			else
+			{
+				$scope.wizard_db_report = '';
+				Snackbar.show('Error on Creating user!');	
+			}
 		}, function(res){
 			$scope.wizard_db_report = '<div class="alert alert-danger">Error when creating user.</div>';
 			Snackbar.show('Error when creating user!');
