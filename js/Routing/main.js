@@ -37,6 +37,12 @@ window.mainApp.config(function($routeProvider) {
 			controller: 'controller.blog.detail.wizard.setting.blog',
 			need_login: true,
 		})
+		.when('/blog/detail/:owner_id/:blog_id/wizard/uninstall/blog', {
+			title: 'Uninstall Blog',
+			templateUrl: 'templates/administrator/blog/blog.wizard.uninstall.html',
+			controller: 'controller.blog.detail.wizard.unsetting.blog',
+			need_login: true,
+		})
 		.when('/blog/detail/:owner_id/:blog_id/wizard/users', {
 			title: 'Setting Database',
 			templateUrl: 'templates/administrator/blog/blog.wizard.user.html',

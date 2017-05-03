@@ -187,22 +187,73 @@ window.mainApp
 		})
 	}
 })
-.controller('controller.blog.detail.wizard.unsetting.blog', function($scope, $config, $routeParams, $authorize, $blog){
+.controller('controller.blog.detail.wizard.unsetting.blog', function($scope, $config, $routeParams, $authorize, $blog,$tools){
+	$scope.blog = {records: []}
+	$scope.settings = {hostname: 'localhost'}
+	$scope.wizard_db_loading = false;
+	$scope.uninstall_all = true; // remove all your blogs file 
+	$scope.also_remove_blog = false; // also remove blog from your blog list
 
+	$scope.get_blog = function()
+	{
+		$blog.get_blogs({blog_owner: $routeParams['owner_id'], blog_id: $routeParams['blog_id']}, function(res){
+			$scope.blog.data = res[0];
+			$scope.settings.blog_key = $scope.blog.data.blog_key;
+			$scope.$apply();
+		})
+	}
+
+	$scope.remove_all_blog = function()
+	{
+		if($scope.also_remove_blog)
+		{
+			$scope.uninstall_all = true;
+		}
+	}
+	$scope.remove_blog_files = function()
+	{
+		if($scope.also_remove_blog)
+		{
+			$scope.also_remove_blog = false;
+		}
+	}
 	$scope.uninstall = function()
 	{
+		componentHandler.upgradeAllRegistered()
+		$('#wizard_db_loading').show()
+		$('#uninstall_button').hide();
+
+		var data = {
+			uninstall_all: $scope.uninstall_all, 
+			also_remove_blog: $scope.also_remove_blog,
+			password: $scope.password,
+			blog_owner: $scope.blog.data.blog_owner,
+
+			where: {
+				blog_owner: $routeParams['owner_id'], 
+				blog_id: $routeParams['blog_id']
+			}
+		}
 		$tools.post(
 			$config.server_url('blog/uninstall'), 
-			{
-				where: {blog_owner: $routeParams['owner_id'], blog_id: $routeParams['blog_id']}
-			}, 
+			data, 
 			function(res){
 				console.log(res)
-				window.location.reload();
+				$('#wizard_db_loading').hide()
+				$('#uninstall_button').show();
+				if($scope.uninstall_all)
+				{
+					window.location.href = '#/home';
+				}else{
+					window.location.href="#/blog/detail/"+$routeParams['owner_id']+'/'+$routeParams['blog_id']+'/wizard';
+				}
 			},
 			function(res){
-				alert('gagal uninstall')
 				console.log(res)
+				res = $tools.isJson(res.responseText)?JSON.parse(res.responseText): res.responseText;
+				alert(res.message)
+				$('#wizard_db_loading').hide()
+				$('#uninstall_button').show();
 			}
 		)
 	}

@@ -1,0 +1,44 @@
+<section ng-init="get_blog()">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="text-center"><h3>Uninstall <strong>"{{blog.data.blog_name}}"</strong></h3></div>
+			<hr>
+			<p>Are you sure want to uninstall this blog?<br>
+			You can't undo / cancel this process.
+			</p>
+			<hr>
+			<p>
+				Will give us a reason why you want to uninstall the blog?
+				<br>
+				<textarea class="form-control" style="min-height: 100px;" placeholder="Share your reason" ng-model="reason"></textarea>
+			</p>
+			<p>
+				Do you want to give GoBlog Developers an advice?
+				<br>
+				<textarea class="form-control" style="min-height: 100px;" placeholder="Give an advice" ng-model="advice"></textarea>
+			</p>
+			<br>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="" ng-model="uninstall_all" ng-checked="uninstall_all" ng-change="remove_blog_files()"> Remove all <strong>"{{blog.data.blog_name}}"</strong> files <strong class="text-danger">*it's will remove all your blog's files</strong>
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="" ng-model="also_remove_blog" ng-checked="also_remove_blog" ng-change="remove_all_blog()"> Also Uninstall <strong>"{{blog.data.blog_name}}"</strong> data from blog list. <strong class="text-danger">*it's will remove all your blog's files also remove it from your blog list</strong>
+				</label>
+			</div>
+			<br>
+			<div class="form-group text-center">
+				<label>Please confirm your password!</label><br>
+				<input type="password" name="password" class="" placeholder="Your Password" ng-model="password">
+			</div>
+			<div class="form-group text-center">
+				<button class="btn btn-primary" ng-click="uninstall()" id="uninstall_button">Uninstall</button>
+				<br>
+				<br>
+				<center><div id="wizard_db_loading" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div></center>
+			</div>
+		</div>
+	</div>
+</section>
