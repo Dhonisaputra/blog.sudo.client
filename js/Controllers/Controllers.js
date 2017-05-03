@@ -191,8 +191,8 @@ window.mainApp
 	$scope.blog = {records: []}
 	$scope.settings = {hostname: 'localhost'}
 	$scope.wizard_db_loading = false;
-	$scope.uninstall_all = true; // remove all your blogs file 
-	$scope.also_remove_blog = false; // also remove blog from your blog list
+	$scope.uninstall_all = false; // remove all your blogs file 
+	$scope.uninstall_blog = true; // also remove blog from your blog list
 
 	$scope.get_blog = function()
 	{
@@ -203,18 +203,19 @@ window.mainApp
 		})
 	}
 
-	$scope.remove_all_blog = function()
+	$scope.change_uninstall_blog = function()
 	{
-		if($scope.also_remove_blog)
+		
+		if($scope.uninstall_all)
 		{
-			$scope.uninstall_all = true;
+			$scope.uninstall_all = false;
 		}
 	}
-	$scope.remove_blog_files = function()
+	$scope.change_uninstall_all = function()
 	{
-		if($scope.also_remove_blog)
+		if($scope.uninstall_all)
 		{
-			$scope.also_remove_blog = false;
+			$scope.uninstall_blog = true;
 		}
 	}
 	$scope.uninstall = function()
@@ -225,7 +226,7 @@ window.mainApp
 
 		var data = {
 			uninstall_all: $scope.uninstall_all, 
-			also_remove_blog: $scope.also_remove_blog,
+			uninstall_blog: $scope.uninstall_blog,
 			password: $scope.password,
 			blog_owner: $scope.blog.data.blog_owner,
 

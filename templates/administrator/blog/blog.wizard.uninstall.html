@@ -20,12 +20,12 @@
 			<br>
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" name="" ng-model="uninstall_all" ng-checked="uninstall_all" ng-change="remove_blog_files()"> Remove all <strong>"{{blog.data.blog_name}}"</strong> files <strong class="text-danger">*it's will remove all your blog's files</strong>
+					<input type="checkbox" name="" ng-model="uninstall_blog" ng-checked="uninstall_blog" ng-change="change_uninstall_blog()"> Remove your <strong>"{{blog.data.blog_name}}"</strong> files <strong class="text-danger">*it's will remove all your blog's files</strong>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" name="" ng-model="also_remove_blog" ng-checked="also_remove_blog" ng-change="remove_all_blog()"> Also Uninstall <strong>"{{blog.data.blog_name}}"</strong> data from blog list. <strong class="text-danger">*it's will remove all your blog's files also remove it from your blog list</strong>
+					<input type="checkbox" name="" ng-model="uninstall_all" ng-checked="uninstall_all" ng-change="change_uninstall_all()"> Also Uninstall <strong>"{{blog.data.blog_name}}"</strong> data from blog list. <strong class="text-danger">*it's will remove all your blog's files also remove it from your blog list</strong>
 				</label>
 			</div>
 			<br>
