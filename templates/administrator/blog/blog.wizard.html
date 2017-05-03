@@ -20,9 +20,12 @@
 			Uninstall your blog
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
-			<a href="#/blog/detail/{{blog.data.blog_owner}}/{{blog.data.blog_id}}/wizard/uninstall" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+			<!-- <a href="#/blog/detail/{{blog.data.blog_owner}}/{{blog.data.blog_id}}/wizard/uninstall" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
 				Uninstall
-			</a>
+			</a> -->
+			<button ng-click="uninstall()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+				Uninstall
+			</button>
 		</div>
 	</div>
 

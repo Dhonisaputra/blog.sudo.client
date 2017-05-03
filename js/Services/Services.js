@@ -236,7 +236,7 @@ window.mainApp
     }
     $rootScope.pagination = this;
 })
-.service('$blog', function($config, $owner){
+.service('$blog', function($config, $owner, $tools){
     this.records = []
     this.init = function()
     {
@@ -279,6 +279,18 @@ window.mainApp
                     break;
             }
         })
+    }
+
+    this.uninstall = function($where, success, fail) {
+        // body...
+        $tools.post(
+            $config.server_url('blog/uninstall'), 
+            {
+                where: $where
+            }, 
+            success,
+            fail
+        )
     }
 })
 .service('$authorize', function($owner, $config, $rootScope){

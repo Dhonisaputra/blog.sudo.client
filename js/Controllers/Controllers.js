@@ -128,6 +128,21 @@ window.mainApp
 			$scope.$apply();
 		})
 	}
+	$scope.uninstall = function()
+	{
+		console.log('uninstall')
+		$blog.uninstall(
+			{blog_owner: $routeParams['owner_id'], blog_id: $routeParams['blog_id']},
+			function(res){
+				console.log(res)
+				window.location.reload();
+			},
+			function(res){
+				alert('gagal uninstall')
+				console.log(res)
+			}
+		)
+	}
 })
 .controller('controller.blog.detail.wizard.setting.blog', function($scope, $config, $routeParams, $authorize, $blog, $tools){
 	$scope.blog = {records: []}
@@ -152,14 +167,44 @@ window.mainApp
 			console.log(res)
 			$scope.wizard_db_report = '';
 			$('#wizard_db_loading').hide()
-			Snackbar.show('Installing blog has done. redirecting to create user!');
-			window.setTimeout(function(){
-				window.location.href = '#/blog/detail/'+$scope.blog.data.blog_owner+'/'+$scope.blog.data.blog_id+'/wizard/users'
-			},2000)
+			
+			if(res.code == 200)
+			{
+				Snackbar.show('Installing blog has done. redirecting to create user!');
+				window.setTimeout(function(){
+					window.location.href = '#/blog/detail/'+$scope.blog.data.blog_owner+'/'+$scope.blog.data.blog_id+'/wizard/users'
+				},2000)
+			}
+			else
+			{
+				$scope.wizard_db_report = '';
+				alert(res.message);	
+			}
+
 		}, function(res){
 			$scope.wizard_db_report = '';
 			$('#wizard_db_loading').hide()
 		})
+	}
+})
+.controller('controller.blog.detail.wizard.unsetting.blog', function($scope, $config, $routeParams, $authorize, $blog){
+
+	$scope.uninstall = function()
+	{
+		$tools.post(
+			$config.server_url('blog/uninstall'), 
+			{
+				where: {blog_owner: $routeParams['owner_id'], blog_id: $routeParams['blog_id']}
+			}, 
+			function(res){
+				console.log(res)
+				window.location.reload();
+			},
+			function(res){
+				alert('gagal uninstall')
+				console.log(res)
+			}
+		)
 	}
 })
 .controller('controller.blog.detail.wizard.setting.user', function($scope, $config, $routeParams, $authorize, $blog, $tools){
@@ -182,6 +227,7 @@ window.mainApp
 		$('#wizard_db_loading').show()
 		$scope.blog.user['blog_key'] = $scope.blog.data.blog_key;
 		$tools.post($config.server_url('blog/insert_user'), {where: {blog_key: $scope.blog.data.blog_key}, user: $scope.blog.user}, function(res){
+			console.log(res)
 			$('#wizard_db_loading').hide()
 			if(res.code == 200)
 			{
@@ -190,6 +236,7 @@ window.mainApp
 				$scope.blog.user.username = ''
 				$scope.blog.user.email = ''
 				$scope.blog.user.password = ''
+				$scope.$apply()
 			}
 			else
 			{
