@@ -229,6 +229,8 @@ window.mainApp
 			uninstall_blog: $scope.uninstall_blog,
 			password: $scope.password,
 			blog_owner: $scope.blog.data.blog_owner,
+			uninstall_advice: $scope.uninstall_advice,
+			dev_advice: $scope.dev_advice,
 
 			where: {
 				blog_owner: $routeParams['owner_id'], 
