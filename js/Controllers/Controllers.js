@@ -193,6 +193,8 @@ window.mainApp
 	$scope.wizard_db_loading = false;
 	$scope.uninstall_all = false; // remove all your blogs file 
 	$scope.uninstall_blog = true; // also remove blog from your blog list
+	$scope.uninstall_advice = '';
+	$scope.dev_advice = '';
 
 	$scope.get_blog = function()
 	{
